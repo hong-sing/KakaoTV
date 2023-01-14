@@ -3,6 +3,7 @@ import os
 with open("m4s.txt", "w", encoding="utf8") as ing_file:
     b = int(input("마지막 번호를 입력하세요 : "))
     c = input("m4s 주소를 입력하세요 : ")
+    quality = input("화질 선택(예:1080) : ")
     adr = c.split("?")
     adr1 = adr[0].rsplit("/", 2)
     lastNum = '{:0>6}'.format(b)
@@ -21,9 +22,22 @@ with open("m4s.txt", "w", encoding="utf8") as ing_file:
     os.system("copy /b init.m4s + 0*.m4s audio.m4s")
 
 # video
-    video_init = 'curl "' + adr1[0] + '/v_t0_HIGH4/init.m4s?' + adr[1] + '\" -o "init.m4s"\n'
-    video_allFile = 'curl "' + adr1[0] + '/v_t0_HIGH4/[000000-' + lastNum + '].m4s?' + adr[1] + '\" -o "#1.m4s"\n' 
-
+    if quality == '1080' :
+        video_init = 'curl "' + adr1[0] + '/v_t0_HIGH4/init.m4s?' + adr[1] + '\" -o "init.m4s"\n'
+        video_allFile = 'curl "' + adr1[0] + '/v_t0_HIGH4/[000000-' + lastNum + '].m4s?' + adr[1] + '\" -o "#1.m4s"\n' 
+    elif quality == '720' :
+        video_init = 'curl "' + adr1[0] + '/v_t0_HIGH/init.m4s?' + adr[1] + '\" -o "init.m4s"\n'
+        video_allFile = 'curl "' + adr1[0] + '/v_t0_HIGH/[000000-' + lastNum + '].m4s?' + adr[1] + '\" -o "#1.m4s"\n' 
+    elif quality == '480' :
+        video_init = 'curl "' + adr1[0] + '/v_t0_MAIN/init.m4s?' + adr[1] + '\" -o "init.m4s"\n'
+        video_allFile = 'curl "' + adr1[0] + '/v_t0_MAIN/[000000-' + lastNum + '].m4s?' + adr[1] + '\" -o "#1.m4s"\n' 
+    elif quality == '360' :
+        video_init = 'curl "' + adr1[0] + '/v_t0_BASE/init.m4s?' + adr[1] + '\" -o "init.m4s"\n'
+        video_allFile = 'curl "' + adr1[0] + '/v_t0_BASE/[000000-' + lastNum + '].m4s?' + adr[1] + '\" -o "#1.m4s"\n'
+    elif quality == '240' :
+        video_init = 'curl "' + adr1[0] + '/v_t0_LOW/init.m4s?' + adr[1] + '\" -o "init.m4s"\n'
+        video_allFile = 'curl "' + adr1[0] + '/v_t0_LOW/[000000-' + lastNum + '].m4s?' + adr[1] + '\" -o "#1.m4s"\n'
+        
     ing_file.write(video_init)
     ing_file.write(video_allFile)
     
