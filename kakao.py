@@ -21,8 +21,8 @@ with open("m4s.txt", "w", encoding="utf8") as ing_file:
     os.system("copy /b init.m4s + 0*.m4s audio.m4s")
 
 # video
-    video_init = 'curl "' + adr1[0] + '/v_t0_HIGH/init.m4s?' + adr[1] + '\" -o "init.m4s"\n'
-    video_allFile = 'curl "' + adr1[0] + '/v_t0_HIGH/[000000-' + lastNum + '].m4s?' + adr[1] + '\" -o "#1.m4s"\n' 
+    video_init = 'curl "' + adr1[0] + '/v_t0_HIGH4/init.m4s?' + adr[1] + '\" -o "init.m4s"\n'
+    video_allFile = 'curl "' + adr1[0] + '/v_t0_HIGH4/[000000-' + lastNum + '].m4s?' + adr[1] + '\" -o "#1.m4s"\n' 
 
     ing_file.write(video_init)
     ing_file.write(video_allFile)
