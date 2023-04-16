@@ -9,8 +9,8 @@ with open("m4s.txt", "w", encoding="utf8") as ing_file:
     lastNum = '{:0>6}'.format(b)
 
 # audio
-    audio_init = 'curl "' + adr1[0] + '/a_t0_128-44100/init.m4s?' + adr[1] + '\" -o "init.m4s"\n'
-    audio_allFile = 'curl "' + adr1[0] + '/a_t0_128-44100/[000000-' + lastNum + '].m4s?' + adr[1] + '\" -o "#1.m4s"\n'
+    audio_init = 'curl "' + adr1[0] + '/a_t0_96-44100/init.m4s?' + adr[1] + '\" -o "init.m4s"\n'
+    audio_allFile = 'curl "' + adr1[0] + '/a_t0_96-44100/[000000-' + lastNum + '].m4s?' + adr[1] + '\" -o "#1.m4s"\n'
 
     # 메모장에 명령어 출력
     ing_file.write(audio_init)
@@ -75,3 +75,6 @@ with open("m4s.txt", "w", encoding="utf8") as ing_file:
         m4s_file = i + ".m4s"
         if os.path.isfile(m4s_file):
             os.remove(m4s_file)
+
+print("다운로드 완료")
+os.system("pause>nul")
